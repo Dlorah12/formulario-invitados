@@ -3,111 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación de Asistencia a Boda</title>
+    <title>Confirmación de Asistencia - Boda</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #333;
+            background-image: url('https://your-image-url.com'); /* Imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            background-blur: 3px;
         }
+        
         .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 15px;
             width: 100%;
             max-width: 600px;
-        }
-        h1 {
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #4CAF50;
         }
-        .form-group {
-            margin-bottom: 20px;
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-family: 'Cursive', sans-serif;
+            color: #f9d8d8;
         }
+        
         label {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
-            color: #555;
+            display: block;
+            margin-bottom: 8px;
         }
+        
         input[type="text"], input[type="email"], input[type="date"], select {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #555;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #f9d8d8;
             font-size: 18px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        button {
+            background-color: #f9d8d8;
+            color: #333;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
             cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
+        
         button:hover {
-            background-color: #45a049;
+            background-color: #e7a7a7;
         }
+
         .guest-list {
             margin-top: 30px;
+            text-align: left;
         }
-        ul {
+
+        .guest-list ul {
             list-style-type: none;
             padding: 0;
         }
-        li {
-            background-color: #eaf2e7;
-            border-radius: 5px;
+
+        .guest-list li {
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            border-radius: 8px;
         }
-        li span {
+
+        .guest-list li span {
             font-weight: bold;
+        }
+
+        .footer {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #f9d8d8;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Confirmación de Asistencia a la Boda</h1>
-        
+        <h1>Confirmación de Asistencia a la Boda de [Nombre Novio] y [Nombre Novia]</h1>
+
         <form id="invitation-form">
-            <div class="form-group">
+            <div>
                 <label for="name">Nombre Completo:</label>
                 <input type="text" id="name" name="name" placeholder="Ingresa tu nombre completo" required>
             </div>
-
-            <div class="form-group">
-                <label for="country">País:</label>
-                <input type="text" id="country" name="country" placeholder="Ingresa tu país" required>
+            <div>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
             </div>
-
-            <div class="form-group">
+            <div>
+                <label for="date">Fecha de Asistencia:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div>
                 <label for="diet">Requerimiento Nutricional:</label>
                 <input type="text" id="diet" name="diet" placeholder="Ejemplo: vegetariano, sin gluten, etc.">
             </div>
-
             <button type="submit">Confirmar Asistencia</button>
         </form>
 
         <div class="guest-list">
             <h2>Invitados Confirmados:</h2>
             <ul id="guest-list">
-                <!-- Lista de invitados se añadirá aquí -->
+                <!-- La lista de invitados se agregará aquí -->
             </ul>
+        </div>
+
+        <div class="footer">
+            <p>Gracias por confirmar tu asistencia. ¡Nos vemos en el gran día! 💍</p>
+            <p><a href="https://tu-sitio-boda.com">Más información sobre la boda</a></p>
         </div>
     </div>
 
@@ -117,12 +144,13 @@
 
             // Obtener los valores del formulario
             const name = document.getElementById('name').value;
-            const country = document.getElementById('country').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
             const diet = document.getElementById('diet').value;
 
             // Crear un nuevo elemento de lista para mostrar al invitado
             const li = document.createElement('li');
-            li.innerHTML = `<span>${name}</span> de ${country} - Requerimiento nutricional: ${diet}`;
+            li.innerHTML = `<span>${name}</span> - Correo: ${email} - Asistirá el: ${date} - Requerimiento nutricional: ${diet}`;
 
             // Agregarlo a la lista de invitados confirmados
             document.getElementById('guest-list').appendChild(li);
@@ -131,6 +159,5 @@
             document.getElementById('invitation-form').reset();
         });
     </script>
-
 </body>
 </html>
