@@ -10,126 +10,119 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #81D4FA; /* Azul cielo */
-            background-image: url('https://your-image-url.com'); /* Imagen de fondo opcional */
-            background-size: cover;
-            background-position: center;
-            color: #333333;
-            overflow: hidden;
+            background-color: #f4f7fc;
+            color: #234d72;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+            background: #ffffff;
             padding: 40px;
             border-radius: 20px;
-            width: 100%;
-            max-width: 650px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
-            animation: fadeIn 1s ease-out;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            margin-bottom: 30px;
-            color: #F4C542; /* Dorado */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: slideIn 1s ease-out;
+            font-size: 42px;
+            color: #234d72;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #5a5a5a;
+            margin-bottom: 40px;
         }
 
         label {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             display: block;
-            margin-bottom: 10px;
-            color: #F4C542; /* Dorado */
+            margin-bottom: 8px;
+            color: #234d72;
         }
 
         input[type="text"], input[type="email"], input[type="date"], select {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             margin-bottom: 20px;
             border-radius: 10px;
-            border: 2px solid #F4C542; /* Bordes dorados */
-            font-size: 18px;
-            background-color: #ffffff;
-            color: #333333;
-            transition: all 0.3s ease;
+            border: 1px solid #ced4da;
+            font-size: 16px;
+            background-color: #f8f9fa;
+            color: #495057;
         }
 
-        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus {
-            border-color: #234D72; /* Azul oscuro en el focus */
-            box-shadow: 0 0 10px rgba(36, 77, 114, 0.5);
+        input:focus {
+            outline: none;
+            border-color: #234d72;
+            box-shadow: 0 0 5px rgba(36, 77, 114, 0.3);
         }
 
         button {
-            background-color: #F4C542; /* Dorado */
-            color: #234D72; /* Azul oscuro */
-            font-size: 18px;
-            padding: 15px 30px;
+            background-color: #234d72;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 12px 30px;
             border: none;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-weight: bold;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #D4A02E; /* Dorado más oscuro */
-            color: white;
-            transform: scale(1.1);
+            background-color: #f4c542;
+            color: #234d72;
         }
 
         .guest-list {
             margin-top: 30px;
-            text-align: left;
         }
 
         .guest-list ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
 
         .guest-list li {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            font-size: 16px;
-            color: #234D72;
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            text-align: left;
+            color: #495057;
         }
 
         .footer {
             font-size: 14px;
-            margin-top: 20px;
+            margin-top: 30px;
+            color: #5a5a5a;
         }
 
         .footer a {
-            color: #F4C542; /* Dorado */
+            color: #234d72;
             text-decoration: none;
         }
 
-        /* Animaciones */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
+        .decorative-line {
+            margin: 20px auto;
+            width: 100px;
+            height: 3px;
+            background-color: #f4c542;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Confirmación de Asistencia</h1>
+        <div class="subtitle">¡Estamos felices de contar contigo en nuestro día especial!</div>
+        <div class="decorative-line"></div>
 
         <form id="invitation-form">
             <div>
@@ -152,15 +145,14 @@
         </form>
 
         <div class="guest-list">
-            <h2>Invitados Confirmados:</h2>
+            <h2>Invitados Confirmados</h2>
             <ul id="guest-list">
-                <!-- Los invitados confirmados se agregan aquí -->
+                <!-- Los invitados confirmados se agregarán aquí -->
             </ul>
         </div>
 
         <div class="footer">
-            <p>Gracias por confirmar tu asistencia. ¡Nos vemos en el gran día! 💍</p>
-            <p><a href="https://tu-sitio-boda.com">Más información sobre la boda</a></p>
+            Gracias por confirmar tu asistencia. <br> Para más información, visita <a href="#">nuestro sitio web</a>.
         </div>
     </div>
 
@@ -174,8 +166,7 @@
             const diet = document.getElementById('diet').value;
 
             const li = document.createElement('li');
-            li.innerHTML = `<span>${name}</span> - Correo: ${email} - Asistirá el: ${date} - Requerimiento nutricional: ${diet}`;
-
+            li.innerHTML = `<strong>${name}</strong> - ${email} - Fecha: ${date} - Dieta: ${diet}`;
             document.getElementById('guest-list').appendChild(li);
 
             document.getElementById('invitation-form').reset();
@@ -183,3 +174,4 @@
     </script>
 </body>
 </html>
+
