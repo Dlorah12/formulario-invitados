@@ -4,57 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmación de Asistencia - Boda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://your-image-url.com'); /* Imagen de fondo */
+            background-color: #81D4FA; /* Azul cielo */
+            background-image: url('https://your-image-url.com'); /* Imagen de fondo opcional */
             background-size: cover;
             background-position: center;
-            color: white;
-            background-blur: 3px;
+            color: #333333;
+            overflow: hidden;
         }
-        
+
         .container {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
+            animation: fadeIn 1s ease-out;
         }
-        
+
         h1 {
-            font-size: 36px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
             margin-bottom: 30px;
-            font-family: 'Cursive', sans-serif;
             color: #F4C542; /* Dorado */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: slideIn 1s ease-out;
         }
-        
+
         label {
             font-size: 18px;
             font-weight: bold;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #F4C542; /* Dorado */
         }
-        
+
         input[type="text"], input[type="email"], input[type="date"], select {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #F4C542; /* Bordes dorados */
+            border-radius: 10px;
+            border: 2px solid #F4C542; /* Bordes dorados */
             font-size: 18px;
-            background-color: #234D72; /* Azul oscuro */
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #333333;
+            transition: all 0.3s ease;
         }
-        
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus {
+            border-color: #234D72; /* Azul oscuro en el focus */
+            box-shadow: 0 0 10px rgba(36, 77, 114, 0.5);
+        }
+
         button {
             background-color: #F4C542; /* Dorado */
             color: #234D72; /* Azul oscuro */
@@ -63,11 +76,14 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
-        
+
         button:hover {
-            background-color: #D4A02E; /* Dorado oscuro */
+            background-color: #D4A02E; /* Dorado más oscuro */
+            color: white;
+            transform: scale(1.1);
         }
 
         .guest-list {
@@ -81,14 +97,12 @@
         }
 
         .guest-list li {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-        }
-
-        .guest-list li span {
-            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #234D72;
         }
 
         .footer {
@@ -100,11 +114,22 @@
             color: #F4C542; /* Dorado */
             text-decoration: none;
         }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Confirmación de Asistencia a la Boda de [Nombre Novio] y [Nombre Novia]</h1>
+        <h1>Confirmación de Asistencia</h1>
 
         <form id="invitation-form">
             <div>
@@ -129,7 +154,7 @@
         <div class="guest-list">
             <h2>Invitados Confirmados:</h2>
             <ul id="guest-list">
-                <!-- La lista de invitados se agregará aquí -->
+                <!-- Los invitados confirmados se agregan aquí -->
             </ul>
         </div>
 
@@ -143,20 +168,16 @@
         document.getElementById('invitation-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Obtener los valores del formulario
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const date = document.getElementById('date').value;
             const diet = document.getElementById('diet').value;
 
-            // Crear un nuevo elemento de lista para mostrar al invitado
             const li = document.createElement('li');
             li.innerHTML = `<span>${name}</span> - Correo: ${email} - Asistirá el: ${date} - Requerimiento nutricional: ${diet}`;
 
-            // Agregarlo a la lista de invitados confirmados
             document.getElementById('guest-list').appendChild(li);
 
-            // Limpiar el formulario después de enviar
             document.getElementById('invitation-form').reset();
         });
     </script>
