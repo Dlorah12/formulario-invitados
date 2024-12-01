@@ -6,7 +6,98 @@
     <title>Confirmación de Asistencia</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* El mismo CSS */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #E6F7FF, #FFFFFF);
+            color: #234d72;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
+            color: #234d72;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #5a5a5a;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #234d72;
+            box-shadow: 0 0 5px rgba(36, 77, 114, 0.3);
+        }
+
+        button {
+            background-color: #234d72;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #1b3a5a;
+            transform: scale(1.05);
+        }
+
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .languages button {
+            width: 100%;
+            max-width: 120px;
+            padding: 10px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #5a5a5a;
+        }
+
+        .footer a {
+            color: #234d72;
+            text-decoration: none;
+        }
     </style>
     <script>
         const translations = {
@@ -92,3 +183,4 @@
     </div>
 </body>
 </html>
+
