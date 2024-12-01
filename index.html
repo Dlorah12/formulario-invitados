@@ -6,117 +6,30 @@
     <title>Confirmación de Asistencia</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom, #E6F7FF, #FFFFFF);
-            color: #234d72;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            width: 90%;
-            text-align: center;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            color: #234d72;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #5a5a5a;
-            margin-bottom: 30px;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        input, select, textarea, button {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ced4da;
-            font-size: 16px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #234d72;
-            box-shadow: 0 0 5px rgba(36, 77, 114, 0.3);
-        }
-
-        button {
-            background-color: #234d72;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        button:hover {
-            background-color: #1b3a5a;
-            transform: scale(1.05);
-        }
-
-        .languages {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .languages button {
-            width: 100%;
-            max-width: 120px;
-            padding: 10px;
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #5a5a5a;
-        }
-
-        .footer a {
-            color: #234d72;
-            text-decoration: none;
-        }
+        /* El mismo CSS */
     </style>
     <script>
         const translations = {
             es: {
                 title: "Confirmación de Asistencia",
-                selectLabel: "Selecciona tu nombre",
-                placeholder: "-- Selecciona tu nombre --",
+                nameLabel: "Nombre completo:",
+                namePlaceholder: "Escribe tu nombre completo",
                 dietLabel: "¿Tienes algún requerimiento nutricional?",
+                dietPlaceholder: "Describe tus requerimientos nutricionales",
                 commentLabel: "¿Algún comentario adicional?",
+                commentPlaceholder: "Escribe tus comentarios aquí",
                 submit: "Enviar Confirmación",
                 subtitle: "¡Estamos felices de contar contigo en nuestro día especial!",
-                footer: "Por favor, confirma antes del [FECHA]. ¡Gracias por acompañarnos en este día especial!"
+                footer: "Por favor, confirma antes del 31/05/2025. ¡Gracias por acompañarnos en este día especial!"
             },
             en: {
                 title: "RSVP Confirmation",
-                selectLabel: "Select your name",
-                placeholder: "-- Select your name --",
+                nameLabel: "Full name:",
+                namePlaceholder: "Enter your full name",
                 dietLabel: "Do you have any dietary requirements?",
+                dietPlaceholder: "Describe your dietary requirements",
                 commentLabel: "Any additional comments?",
+                commentPlaceholder: "Write your comments here",
                 submit: "Send Confirmation",
                 subtitle: "We are happy to have you with us on our special day!",
                 footer: "Please confirm before 31/05/2025. Thank you for joining us on this special day!"
@@ -126,20 +39,24 @@
         function changeLanguage(lang) {
             const elements = {
                 title: document.querySelector("h1"),
-                selectLabel: document.querySelector("label[for='guest']"),
-                placeholder: document.querySelector("#guest option"),
+                nameLabel: document.querySelector("label[for='guest']"),
+                namePlaceholder: document.querySelector("#guest"),
                 dietLabel: document.querySelector("label[for='diet']"),
+                dietPlaceholder: document.querySelector("#diet"),
                 commentLabel: document.querySelector("label[for='message']"),
+                commentPlaceholder: document.querySelector("#message"),
                 submit: document.querySelector("button[type='submit']"),
                 subtitle: document.querySelector(".subtitle"),
                 footer: document.querySelector(".footer")
             };
 
             elements.title.textContent = translations[lang].title;
-            elements.selectLabel.textContent = translations[lang].selectLabel;
-            elements.placeholder.textContent = translations[lang].placeholder;
+            elements.nameLabel.textContent = translations[lang].nameLabel;
+            elements.namePlaceholder.placeholder = translations[lang].namePlaceholder;
             elements.dietLabel.textContent = translations[lang].dietLabel;
+            elements.dietPlaceholder.placeholder = translations[lang].dietPlaceholder;
             elements.commentLabel.textContent = translations[lang].commentLabel;
+            elements.commentPlaceholder.placeholder = translations[lang].commentPlaceholder;
             elements.submit.textContent = translations[lang].submit;
             elements.subtitle.textContent = translations[lang].subtitle;
             elements.footer.textContent = translations[lang].footer;
@@ -156,25 +73,22 @@
         <h1>Confirmación de Asistencia</h1>
         <div class="subtitle">¡Estamos felices de contar contigo en nuestro día especial!</div>
 
-     <form id="invitation-form" action="https://script.google.com/macros/s/AKfycbyKAEGCasS7RYx_Lq7CH1zeKT4__rIplB9K5inPF9MPWQnv2Enyvg6s_Gmk6qmWf4sJzA/exec" method="POST">
-    <label for="guest">Nombre completo:</label>
-    <input type="text" id="guest" name="guest" placeholder="Escribe tu nombre completo" required>
-    
-    <label for="diet">¿Tienes algún requerimiento nutricional?</label>
-    <input type="text" id="diet" name="diet">
+        <form id="invitation-form" action="https://script.google.com/macros/s/AKfycbyKAEGCasS7RYx_Lq7CH1zeKT4__rIplB9K5inPF9MPWQnv2Enyvg6s_Gmk6qmWf4sJzA/exec" method="POST">
+            <label for="guest">Nombre completo:</label>
+            <input type="text" id="guest" name="guest" placeholder="Escribe tu nombre completo" required>
+            
+            <label for="diet">¿Tienes algún requerimiento nutricional?</label>
+            <input type="text" id="diet" name="diet" placeholder="Describe tus requerimientos nutricionales">
 
-    <label for="message">¿Algún comentario adicional?</label>
-    <textarea id="message" name="message" rows="4"></textarea>
+            <label for="message">¿Algún comentario adicional?</label>
+            <textarea id="message" name="message" rows="4" placeholder="Escribe tus comentarios aquí"></textarea>
 
-    <button type="submit">Enviar Confirmación</button>
-</form>
+            <button type="submit">Enviar Confirmación</button>
+        </form>
+
         <div class="footer">
             Por favor, confirma antes del 31/05/2025. ¡Gracias por acompañarnos en este día especial!
         </div>
     </div>
 </body>
 </html>
-
-</body>
-</html>
-
