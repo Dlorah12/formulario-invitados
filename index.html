@@ -4,80 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmación de Asistencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: "Georgia", serif;
-            background-color: #E6F7FF; /* Azul cielo */
-            color: #444;
-            margin: 0;
-            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #E6F7FF, #FFFFFF);
+            color: #234d72;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(to bottom, #E6F7FF, #FFFFFF);
+            min-height: 100vh;
+            margin: 0;
         }
 
         .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
             width: 90%;
             text-align: center;
-            position: relative;
-            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
-            font-size: 2em;
-            color: #DAA520; /* Dorado */
-            font-style: italic;
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
+            color: #234d72;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #5a5a5a;
+            margin-bottom: 30px;
         }
 
         label {
             display: block;
-            margin: 15px 0 5px;
+            margin-top: 15px;
             font-weight: bold;
         }
 
-        select, textarea, button {
+        input, select, textarea, button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #234d72;
+            box-shadow: 0 0 5px rgba(36, 77, 114, 0.3);
         }
 
         button {
-            background-color: #DAA520; /* Dorado */
-            color: #fff;
+            background-color: #234d72;
+            color: white;
+            font-weight: bold;
             border: none;
+            border-radius: 25px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         button:hover {
-            background-color: #B8860B; /* Dorado más oscuro */
+            background-color: #1b3a5a;
+            transform: scale(1.05);
         }
 
         .languages {
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            color: #666;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .languages button {
+            width: 100%;
+            max-width: 120px;
+            padding: 10px;
         }
 
         .footer {
-            font-size: 0.8em;
-            margin-top: 20px;
-            color: #999;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #5a5a5a;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .footer a {
+            color: #234d72;
+            text-decoration: none;
         }
     </style>
     <script>
@@ -86,16 +105,20 @@
                 title: "Confirmación de Asistencia",
                 selectLabel: "Selecciona tu nombre",
                 placeholder: "-- Selecciona tu nombre --",
-                commentLabel: "¿Tienes algún comentario o requerimiento especial?",
+                dietLabel: "¿Tienes algún requerimiento nutricional?",
+                commentLabel: "¿Algún comentario adicional?",
                 submit: "Enviar Confirmación",
+                subtitle: "¡Estamos felices de contar contigo en nuestro día especial!",
                 footer: "Por favor, confirma antes del [FECHA]. ¡Gracias por acompañarnos en este día especial!"
             },
             en: {
                 title: "RSVP Confirmation",
                 selectLabel: "Select your name",
                 placeholder: "-- Select your name --",
-                commentLabel: "Do you have any comment or special requirement?",
+                dietLabel: "Do you have any dietary requirements?",
+                commentLabel: "Any additional comments?",
                 submit: "Send Confirmation",
+                subtitle: "We are happy to have you with us on our special day!",
                 footer: "Please confirm before [DATE]. Thank you for joining us on this special day!"
             }
         };
@@ -105,31 +128,36 @@
                 title: document.querySelector("h1"),
                 selectLabel: document.querySelector("label[for='guest']"),
                 placeholder: document.querySelector("#guest option"),
+                dietLabel: document.querySelector("label[for='diet']"),
                 commentLabel: document.querySelector("label[for='message']"),
-                submit: document.querySelector("button"),
+                submit: document.querySelector("button[type='submit']"),
+                subtitle: document.querySelector(".subtitle"),
                 footer: document.querySelector(".footer")
             };
 
             elements.title.textContent = translations[lang].title;
             elements.selectLabel.textContent = translations[lang].selectLabel;
             elements.placeholder.textContent = translations[lang].placeholder;
+            elements.dietLabel.textContent = translations[lang].dietLabel;
             elements.commentLabel.textContent = translations[lang].commentLabel;
             elements.submit.textContent = translations[lang].submit;
+            elements.subtitle.textContent = translations[lang].subtitle;
             elements.footer.textContent = translations[lang].footer;
         }
     </script>
 </head>
 <body>
     <div class="container">
-        <h1>Confirmación de Asistencia</h1>
-        <p class="languages">
+        <div class="languages">
             <button onclick="changeLanguage('es')">Español</button>
             <button onclick="changeLanguage('en')">English</button>
-        </p>
+        </div>
+        
+        <h1>Confirmación de Asistencia</h1>
+        <div class="subtitle">¡Estamos felices de contar contigo en nuestro día especial!</div>
 
-    
-        <form>
-            <label for="guest">Selecciona tu nombre</label>
+        <form id="invitation-form">
+            <label for="guest">Selecciona tu nombre:</label>
             <select id="guest" name="guest" required>
                 <option value="" disabled selected>-- Selecciona tu nombre --</option>
                 <option value="Mari Lu Salazar y Miguel Antonio Puce">Mari Lu Salazar y Miguel Antonio Puce</option>
@@ -143,7 +171,7 @@
                 <option value="Hermes Salazar y familia">Hermes Salazar y familia</option>
                 <option value="Jessica Salazar y esposo">Jessica Salazar y esposo</option>
                 <option value="Harold Salazar y familia">Harold Salazar y familia</option>
-                <option value="Daniela y Camila">Daniela y Camila</option>
+                <option value="Daniela y Camila Salazar">Daniela y Camila Salazar</option>
                 <option value="Marino y Sharick Torres">Marino y Sharick Torres</option>
                 <option value="Blanca Julia, Diana y Franco">Blanca Julia, Diana y Franco</option>
                 <option value="Franco Salazar y Duvan Salazar">Franco Salazar y Duvan Salazar</option>
@@ -164,18 +192,32 @@
                 <option value="Carlos Eduardo Benavides">Carlos Eduardo Benavides</option>
                 <option value="Cristian David Obando y esposa">Cristian David Obando y esposa</option>
                 <option value="Hugo Madronero y Marleny">Hugo Madronero y Marleny</option>
+                <option value="Ruben Dario and Family">Ruben Dario and Family</option>
+                <option value="Yurani Madronero">Yurani Madronero</option>
+                <option value="Teofilo Madronero">Teofilo Madronero</option>
                 <option value="Luke Aitken and Barbara Pfeifer">Luke Aitken and Barbara Pfeifer</option>
-                <!-- Continúa agregando más invitados aquí -->
+                <option value="Dan Rayner">Dan Rayner</option>
+                <option value="Jake Ackroyd">Jake Ackroyd</option>
+                <option value="Harry McGregor">Harry McGregor</option>
+                <option value="Gaby Rosero">Gaby Rosero</option>
             </select>
 
-            <label for="message">¿Tienes algún comentario o requerimiento especial?</label>
+            <label for="diet">¿Tienes algún requerimiento nutricional?</label>
+            <input type="text" id="diet" name="diet">
+
+            <label for="message">¿Algún comentario adicional?</label>
             <textarea id="message" name="message" rows="4"></textarea>
 
             <button type="submit">Enviar Confirmación</button>
         </form>
 
-        <p class="footer">Por favor, confirma antes del [FECHA]. ¡Gracias por acompañarnos en este día especial!</p>
+        <div class="footer">
+            Por favor, confirma antes del 18/02/2025. ¡Gracias por acompañarnos en este día especial!
+        </div>
     </div>
+</body>
+</html>
+
 </body>
 </html>
 
