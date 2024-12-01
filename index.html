@@ -3,182 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación de Asistencia - Boda</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Confirmación de Asistencia</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: "Georgia", serif;
+            background-color: #E6F7FF; /* Azul cielo */
+            color: #444;
             margin: 0;
             padding: 0;
-            background-color: #f7f9fc; /* Fondo claro */
-            color: #234d72;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            background: linear-gradient(to bottom, #E6F7FF, #FFFFFF);
         }
 
         .container {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
             width: 90%;
-            max-width: 700px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-out;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            color: #234d72;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #5a5a5a;
-            margin-bottom: 30px;
+            font-size: 2em;
+            color: #DAA520; /* Dorado */
+            font-style: italic;
         }
 
         label {
-            font-size: 16px;
-            font-weight: bold;
             display: block;
-            margin-bottom: 8px;
-            color: #234d72;
+            margin: 15px 0 5px;
+            font-weight: bold;
         }
 
-        input[type="text"], input[type="email"], input[type="date"], select {
+        select, textarea, button {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border: 1px solid #ced4da;
-            font-size: 16px;
-            background-color: #f8f9fa;
-            color: #495057;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #234d72;
-            box-shadow: 0 0 5px rgba(36, 77, 114, 0.3);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
         }
 
         button {
-            background-color: #234d72;
-            color: #ffffff;
-            font-size: 16px;
-            padding: 12px 30px;
+            background-color: #DAA520; /* Dorado */
+            color: #fff;
             border: none;
-            border-radius: 25px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #3b6ca8;
-            transform: scale(1.05);
+            background-color: #B8860B; /* Dorado más oscuro */
         }
 
-        .guest-list {
-            margin-top: 30px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .guest-list ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .guest-list li {
-            background-color: #f8f9fa;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            text-align: left;
-            color: #495057;
+        .languages {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            color: #666;
         }
 
         .footer {
-            font-size: 14px;
-            margin-top: 30px;
-            color: #5a5a5a;
+            font-size: 0.8em;
+            margin-top: 20px;
+            color: #999;
         }
 
-        .footer a {
-            color: #234d72;
-            text-decoration: none;
-        }
-
-        /* Animaciones */
         @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    <script>
+        const translations = {
+            es: {
+                title: "Confirmación de Asistencia",
+                selectLabel: "Selecciona tu nombre",
+                placeholder: "-- Selecciona tu nombre --",
+                commentLabel: "¿Tienes algún comentario o requerimiento especial?",
+                submit: "Enviar Confirmación",
+                footer: "Por favor, confirma antes del [FECHA]. ¡Gracias por acompañarnos en este día especial!"
+            },
+            en: {
+                title: "RSVP Confirmation",
+                selectLabel: "Select your name",
+                placeholder: "-- Select your name --",
+                commentLabel: "Do you have any comment or special requirement?",
+                submit: "Send Confirmation",
+                footer: "Please confirm before [DATE]. Thank you for joining us on this special day!"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = {
+                title: document.querySelector("h1"),
+                selectLabel: document.querySelector("label[for='guest']"),
+                placeholder: document.querySelector("#guest option"),
+                commentLabel: document.querySelector("label[for='message']"),
+                submit: document.querySelector("button"),
+                footer: document.querySelector(".footer")
+            };
+
+            elements.title.textContent = translations[lang].title;
+            elements.selectLabel.textContent = translations[lang].selectLabel;
+            elements.placeholder.textContent = translations[lang].placeholder;
+            elements.commentLabel.textContent = translations[lang].commentLabel;
+            elements.submit.textContent = translations[lang].submit;
+            elements.footer.textContent = translations[lang].footer;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Confirmación de Asistencia</h1>
-        <div class="subtitle">¡Estamos felices de contar contigo en nuestro día especial!</div>
+        <p class="languages">
+            <button onclick="changeLanguage('es')">Español</button>
+            <button onclick="changeLanguage('en')">English</button>
+        </p>
 
-        <form id="invitation-form">
-            <div>
-                <label for="name">Nombre Completo:</label>
-                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre completo" required>
-            </div>
-            <div>
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
-            </div>
-            <div>
-                <label for="date">Fecha de Asistencia:</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-            <div>
-                <label for="diet">Requerimiento Nutricional:</label>
-                <input type="text" id="diet" name="diet" placeholder="Ejemplo: vegetariano, sin gluten, etc.">
-            </div>
-            <button type="submit">Confirmar Asistencia</button>
+    
+        <form>
+            <label for="guest">Selecciona tu nombre</label>
+            <select id="guest" name="guest" required>
+                <option value="" disabled selected>-- Selecciona tu nombre --</option>
+                <option value="Mari Lu Salazar y Miguel Antonio Puce">Mari Lu Salazar y Miguel Antonio Puce</option>
+                <option value="Maria Fernanda Puce y Harold">Maria Fernanda Puce y Harold</option>
+                <option value="Carlos David Puce">Carlos David Puce</option>
+                <option value="Maria del Carmen Puce">Maria del Carmen Puce</option>
+                <option value="Mateo Arciniegas y Natalia">Mateo Arciniegas y Natalia</option>
+                <option value="Zeneida Margarita y familia">Zeneida Margarita y familia</option>
+                <option value="Daniel Salazar">Daniel Salazar</option>
+                <option value="Arcely Salazar y Familia">Arcely Salazar y Familia</option>
+                <option value="Hermes Salazar y familia">Hermes Salazar y familia</option>
+                <option value="Jessica Salazar y esposo">Jessica Salazar y esposo</option>
+                <option value="Harold Salazar y familia">Harold Salazar y familia</option>
+                <option value="Daniela y Camila">Daniela y Camila</option>
+                <option value="Marino y Sharick Torres">Marino y Sharick Torres</option>
+                <option value="Blanca Julia, Diana y Franco">Blanca Julia, Diana y Franco</option>
+                <option value="Franco Salazar y Duvan Salazar">Franco Salazar y Duvan Salazar</option>
+                <option value="Nataly Bastidas y esposo">Nataly Bastidas y esposo</option>
+                <option value="Norida Bastidas">Norida Bastidas</option>
+                <option value="Yessika Ortega y Victor Falcony">Yessika Ortega y Victor Falcony</option>
+                <option value="Daniela Delgado y esposo">Daniela Delgado y esposo</option>
+                <option value="Angela Bastidas">Angela Bastidas</option>
+                <option value="Lorena y esposa">Lorena y esposa</option>
+                <option value="Lizeth Valencia">Lizeth Valencia</option>
+                <option value="Andres Zapata y Renan">Andres Zapata y Renan</option>
+                <option value="Daniela Vergara y esposo">Daniela Vergara y esposo</option>
+                <option value="Kate Mabezoy">Kate Mabezoy</option>
+                <option value="Laura García y familia">Laura García y familia</option>
+                <option value="Sarah Newton">Sarah Newton</option>
+                <option value="Rosie Helson and Korbinian Krainau">Rosie Helson and Korbinian Krainau</option>
+                <option value="Genevieve Helson and Peter Kolaric">Genevieve Helson and Peter Kolaric</option>
+                <option value="Carlos Eduardo Benavides">Carlos Eduardo Benavides</option>
+                <option value="Cristian David Obando y esposa">Cristian David Obando y esposa</option>
+                <option value="Hugo Madronero y Marleny">Hugo Madronero y Marleny</option>
+                <option value="Luke Aitken and Barbara Pfeifer">Luke Aitken and Barbara Pfeifer</option>
+                <!-- Continúa agregando más invitados aquí -->
+            </select>
+
+            <label for="message">¿Tienes algún comentario o requerimiento especial?</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <button type="submit">Enviar Confirmación</button>
         </form>
 
-        <div class="guest-list">
-            <h2>Invitados Confirmados</h2>
-            <ul id="guest-list">
-                <!-- Los invitados confirmados se agregarán aquí -->
-            </ul>
-        </div>
-
-        <div class="footer">
-            Gracias por confirmar tu asistencia. <br> Para más información, visita <a href="#">nuestro sitio web</a>.
-        </div>
+        <p class="footer">Por favor, confirma antes del [FECHA]. ¡Gracias por acompañarnos en este día especial!</p>
     </div>
-
-    <script>
-        document.getElementById('invitation-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const date = document.getElementById('date').value;
-            const diet = document.getElementById('diet').value;
-
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${name}</strong> - ${email} - Fecha: ${date} - Dieta: ${diet}`;
-            document.getElementById('guest-list').appendChild(li);
-
-            document.getElementById('invitation-form').reset();
-        });
-    </script>
 </body>
 </html>
 
