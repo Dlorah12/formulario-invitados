@@ -75,6 +75,12 @@
             transform: scale(1.05);
         }
 
+        button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .languages {
             display: flex;
             justify-content: center;
@@ -152,6 +158,12 @@
             elements.subtitle.textContent = translations[lang].subtitle;
             elements.footer.textContent = translations[lang].footer;
         }
+
+        function handleSubmit(event) {
+            const submitButton = document.querySelector("button[type='submit']");
+            submitButton.disabled = true;
+            submitButton.textContent = "Enviando...";
+        }
     </script>
 </head>
 <body>
@@ -164,7 +176,7 @@
         <h1>Confirmación de Asistencia</h1>
         <div class="subtitle">¡Estamos felices de contar contigo en nuestro día especial!</div>
 
-        <form id="invitation-form" action="https://script.google.com/macros/s/AKfycbyKAEGCasS7RYx_Lq7CH1zeKT4__rIplB9K5inPF9MPWQnv2Enyvg6s_Gmk6qmWf4sJzA/exec" method="POST">
+        <form id="invitation-form" action="https://script.google.com/macros/s/AKfycbyKAEGCasS7RYx_Lq7CH1zeKT4__rIplB9K5inPF9MPWQnv2Enyvg6s_Gmk6qmWf4sJzA/exec" method="POST" onsubmit="handleSubmit(event)">
             <label for="guest">Nombre completo:</label>
             <input type="text" id="guest" name="guest" placeholder="Escribe tu nombre completo" required>
             
